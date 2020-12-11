@@ -1,3 +1,5 @@
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
 import '../util/base64.dart';
 import 'address.dart';
 
@@ -10,8 +12,8 @@ class User {
   UserStatus status;
 
   User({
-      this.username = '',
-      this.password = '',
+      this.username,
+      this.password,
       this.address,
       this.accetpsMarketing = false,
       this.acceptsPrivacyPolicy = false,
@@ -58,5 +60,15 @@ class User {
 
   setAddress({street, zip, city}) {
     this.address.setAddress(street: street, zip: zip, city: city);
+  }
+
+  Future<void> toStorage() async {
+
+    if (this.isEmpty) return;
+
+    FlutterSecureStorage storage = FlutterSecureStorage();
+    storage.write(key: 'username', value: this.username);
+    storage.write(key: 'password', value: this.password);
+    
   }
 }

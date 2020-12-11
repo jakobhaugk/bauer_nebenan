@@ -26,6 +26,7 @@ dependencies:
   simple_animations: ^2.4.0
   keyboard_visibility: ^0.5.6
   confetti: ^0.5.4+1
+  page_transition: ^1.1.7+3
 
 
   # The following adds the Cupertino Icons font to your application.

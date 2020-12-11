@@ -20,8 +20,7 @@ class UserProvider extends ChangeNotifier {
   Future<void> _checkFirstLogin() async {
     if (user.readyToShop) {
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      bool firstLogin = prefs.getBool('firstLogin') ?? true;
-      if (firstLogin) {
+      if (prefs.getBool('firstLogin') ?? true) {
         user.status = UserStatus.firstLogin;
         prefs.setBool('firstLogin', false);
       }
@@ -33,17 +32,18 @@ class UserProvider extends ChangeNotifier {
 
     if (user == null || user.isEmpty) {
       UserStatus status;
-      
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      bool firstLaunch = prefs.getBool('firstLaunch') ?? true;
 
-      if (firstLaunch) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      if (prefs.getBool('firstLaunch') ?? true) {
         status = UserStatus.firstLaunch;
         prefs.setBool('firstLaunch', false);
-      } else status = UserStatus.unregistered;
+      } else
+        status = UserStatus.unregistered;
 
       return User(status: status);
-    }
+      
+    } else if (user.password == null) return await register(user);
 
     Map res = await fetch('post', 'login', body: user.loginBody);
     user = User.fromJSON(res, former: user);
@@ -58,6 +58,8 @@ class UserProvider extends ChangeNotifier {
 
     user = User.fromJSON(res, former: userData);
 
+    user.toStorage();
+
     _checkFirstLogin();
 
     return user;
@@ -67,6 +69,4 @@ class UserProvider extends ChangeNotifier {
     if (user == null) throw ('user is not defined');
     return await fetch('post', 'newsletter', body: {'signup': user.username});
   }
-
-  
 }

@@ -51,6 +51,7 @@ class _LaunchScreenState extends State<LaunchScreen> {
               if (snapshot.hasError) return ErrorScreen(message: snapshot.error,);
               else if (snapshot.hasData) {
                 User _user = snapshot.data;
+                return App();
 
                 switch (_user.status) {
                   case UserStatus.firstLaunch:

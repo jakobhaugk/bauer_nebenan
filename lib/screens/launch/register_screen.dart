@@ -26,15 +26,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
       
       form.save();
 
-      User newUser = User();
-
-      try {
-        newUser = await Provider.of<UserProvider>(context, listen: false).register(_user);
-      } catch (e) {}
-
+      User newUser = await Provider.of<UserProvider>(context, listen: false).register(_user);
+      
       if (newUser.status == UserStatus.firstLogin) Navigator.of(context).pushReplacementNamed('/first-login');
       else if (newUser.readyToShop) Navigator.of(context).pushReplacementNamed('/app');
-      else Navigator.of(context).pushReplacementNamed('/waiting');
+      else Navigator.of(context).pushNamed('/waiting');
       
       return true;
 

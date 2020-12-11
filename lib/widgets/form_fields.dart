@@ -181,39 +181,6 @@ class CheckboxFormField extends FormField<bool> {
             });
 }
 
-//   @override
-//   CheckboxFormFieldState createState() => CheckboxFormFieldState();
-//   // final Function validator, onSaved;
-//   // final String label;
-//   // final TextStyle labelStyle;
-//   // final bool initValue;
-// }
-
-// class CheckboxFormFieldState extends State<CheckboxFormField> {
-//   bool _checked;
-
-//   @override
-//   void initState() {
-//     _checked = widget.initValue;
-//     super.initState();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Row(
-//       children: [
-//         Checkbox(
-//           value: _checked,
-//           onChanged: (val) => setState(() => _checked = val),
-//         ),
-//         Text(
-//           widget.label,
-//           style: widget.labelStyle,
-//         ),
-//       ],
-//     );
-//   }
-// }
 
 class NameFields extends StatelessWidget {
   final Function onSave;
@@ -246,46 +213,6 @@ class NameFields extends StatelessWidget {
             onSaved: (value) => onSave(last: value),
           ),
         ),
-      ],
-    );
-  }
-}
-
-class AddressFields extends StatelessWidget {
-  final Function onSave;
-
-  AddressFields({this.onSave});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        TextFormField(
-          decoration: InputDecoration(
-              labelText: 'Straße und Hausnummer', border: OutlineInputBorder()),
-          validator: (value) => value.isEmpty
-              ? 'Bitte gib deine Straße und Hausnummer ein'
-              : true,
-          onSaved: (value) => onSave(street: value),
-        ),
-        Row(children: [
-          Expanded(
-            flex: 1,
-            child: TextFormField(
-              decoration: InputDecoration(
-                  labelText: 'PLZ', border: OutlineInputBorder()),
-              onSaved: (value) => onSave(zip: value),
-            ),
-          ),
-          Expanded(
-            flex: 3,
-            child: TextFormField(
-              decoration: InputDecoration(
-                  labelText: 'Stadt', border: OutlineInputBorder()),
-              onSaved: (value) => onSave(city: value),
-            ),
-          )
-        ]),
       ],
     );
   }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'home.dart';
+
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
@@ -18,13 +20,6 @@ class App extends StatelessWidget {
           scaffoldBackgroundColor: Colors.grey[100],
           fontFamily: 'Montserrat',
         ),
-        home: Scaffold(
-          appBar: AppBar(
-            title: Text('Bauer nebenan'),
-          ),
-          body: Center(
-            child: Text('Home'),
-          ),
-        ),
+        home: Home(),
       );
 }
