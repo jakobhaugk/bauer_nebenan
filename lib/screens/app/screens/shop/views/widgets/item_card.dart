@@ -23,7 +23,7 @@ class ItemCard extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.only(top: 24.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             Expanded(
@@ -47,10 +47,12 @@ class ItemCard extends StatelessWidget {
               child: Text(
                 title,
                 style: TextStyle(fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
               ),
             ),
             if (subtitle.isNotEmpty) Text(
               subtitle,
+              textAlign: TextAlign.center,
             )
           ],
         ),

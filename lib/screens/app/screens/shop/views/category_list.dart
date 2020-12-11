@@ -1,7 +1,8 @@
-import 'package:bauer_nebenan/models/category.dart';
-import 'package:bauer_nebenan/screens/app/screens/shop/views/widgets/item_card.dart';
-import 'package:bauer_nebenan/screens/loading/loading_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'package:bauer_nebenan/models/category.dart';
+import 'package:bauer_nebenan/screens/loading/loading_screen.dart';
+import 'widgets/item_card.dart';
 
 class CategoryListView extends StatefulWidget {
   @override
@@ -9,11 +10,11 @@ class CategoryListView extends StatefulWidget {
 }
 
 class _CategoryListViewState extends State<CategoryListView> {
-  Future<List<Category>> _categoriesFuture;
+  Future<List<Category>> _categoryListFuture;
 
   @override
   void initState() {
-    _categoriesFuture = Future.delayed(
+    _categoryListFuture = Future.delayed(
         Duration(seconds: 2),
         () => [
               Category(name: 'Obst', imageUrl: 'https://www.lecker.de/assets/field/image/obstsorten-b.jpg'),
@@ -27,7 +28,7 @@ class _CategoryListViewState extends State<CategoryListView> {
     return Column(
       children: [
         FutureBuilder<List<Category>>(
-            future: _categoriesFuture,
+            future: _categoryListFuture,
             builder: (context, snapshot) {
               switch (snapshot.connectionState) {
                 case ConnectionState.none:

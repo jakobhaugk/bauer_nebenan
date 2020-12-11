@@ -29,7 +29,7 @@ class _ShopScreenState extends State<ShopScreen> with WidgetsBindingObserver {
           switch (settings.name) {
             case '/':
             case '/category-list':
-              title = 'Kategorien';
+              title = 'Unser Sortiment';
               body = CategoryListView();
               break;
 

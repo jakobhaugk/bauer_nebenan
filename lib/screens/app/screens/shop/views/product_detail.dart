@@ -1,5 +1,7 @@
-import 'package:bauer_nebenan/models/product.dart';
 import 'package:flutter/material.dart';
+
+import 'package:bauer_nebenan/models/product.dart';
+
 
 class ProductDetailView extends StatefulWidget {
   final Product product;

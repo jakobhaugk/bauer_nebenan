@@ -11,12 +11,13 @@ class Product  {
 	List<String> tags;
 	String unit;
 	int quantityAvailable;
-	int price;
+  int quantitySelected;
+	double price;
 	EcoScore ecoScore;
 	List<String> images;
 	Farmer farmer;
 
-	Product({this.id, this.title, this.description, this.category, this.tags, this.unit, this.quantityAvailable, this.price, this.ecoScore, this.images, this.farmer});
+	Product({this.id, this.title, this.description, this.category, this.tags, this.unit, this.quantityAvailable, this.price, this.ecoScore, this.images, this.farmer, this.quantitySelected = 0});
 
 	factory Product.fromJson(Map<String, dynamic> json) {
 		return Product(
@@ -54,6 +55,16 @@ class Product  {
     }
 		return data;
 	}
+
+
+  _formatPrice(num n) => n.toStringAsFixed(2).replaceFirst('.', ',');
+
+  num get total => this.quantitySelected * this.price;
+
+  String get displayPrice => '${_formatPrice(this.price)} € / ${this.unit}';
+
+  String get priceAndQuantity =>
+      '${this.quantitySelected} x ${_formatPrice(this.price)} €';
 
 
 }
