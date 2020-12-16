@@ -1,10 +1,11 @@
+import 'package:bauer_nebenan/screens/app/screens/shop/views/snippets/additional_info.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/details.dart';
 import 'package:bauer_nebenan/models/product.dart';
 import 'snippets/info_cards.dart';
 import 'snippets/title.dart';
-
+import 'snippets/description.dart';
 
 class ProductDetailView extends StatefulWidget {
   final Product product;
@@ -35,15 +36,18 @@ class _ProductDetailViewState extends State<ProductDetailView> {
       initScrollOffset: MediaQuery.of(context).size.width * 0.4,
       body: Container(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 36),
+          padding: const EdgeInsets.only(left: 36, right: 36, bottom: 36),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
             children: [
-              ProductTitle(product: widget.product,),
+              ProductTitle(product: widget.product),
               if (widget.product.farmer != null)
-                FarmerInfo(farmer: widget.product.farmer,),
+                ProductFarmerInfo(farmer: widget.product.farmer),
               if (widget.product.ecoScore != null)
-                EcoInfo(ecoScore: widget.product.ecoScore,)
+                ProductEcoInfo(ecoScore: widget.product.ecoScore),
+              ProductDescription(description: widget.product.description),
+              ProductAdditionalInfo(info: widget.product.additionalInformation),
             ],
           ),
         ),

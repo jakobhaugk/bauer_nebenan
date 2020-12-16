@@ -32,12 +32,13 @@ class _ProductListViewState extends State<ProductListView> {
                   'https://www.baumschule-horstmann.de/bilder/popup/apfel-geheimrat-dr-oldenburg-m002566_h_0.jpg',
                   'https://www.tagesspiegel.de/images/yellow-color-place-and-window-with-sun-light/26102892/3-format530.jpg',
                 ],
-                description: 'Sehr leckerer Apfel Lorem Ipsum dies das',
+                description: 'Ea quos ut cupiditate sit quis impedit. Sed rerum sint dolores commodi veritatis nam distinctio. Ut vero dolorum eligendi ut eveniet temporibus.\nSint sed dolorem vel mollitia eos nostrum est. Reprehenderit ut molestiae assumenda quam. Ea ut consequatur porro. Necessitatibus cumque placeat est quae alias suscipit. Asperiores et voluptatem magnam molestias aut minus impedit. Commodi enim amet facilis consequatur cum adipisci ut.',
                 price: 2.1,
                 baseUnit: '1 kg',
                 baseUnitRelation: 0.5,
                 farmer: Farmer(name: 'Bauer Paul', profileImage: 'https://www.tvmovie.de/bilder/760/2019/06/06/71228-bauer-sucht-frau-christian-33-aus-niedersachsen.jpg?itok=5OYK74Nm'),
-                ecoScore: EcoScore(co2: 70, distance: 23, ranking: 76)
+                ecoScore: EcoScore(co2: 70, distance: 23, ranking: 76),
+                additionalInformation: [AdditionalInfo(title: 'Nährwerte', image: 'https://lh3.googleusercontent.com/proxy/wjkS5I5SLoX6dhGFRUBJ2MK-oOKsQGIqx5wjxofxonEJu6cxsTQttu9GjTxAJZlTP2Jvf5sMVTDoBFLbsWy8U4gtN-oq7n6tTm2V8m-sXoUY1NzRjXHyBJfFbadDc5K4turSZLa9WA')],
               ),
               Product(
                 title: 'Birne',

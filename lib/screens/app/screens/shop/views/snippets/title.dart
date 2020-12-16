@@ -22,6 +22,7 @@ class ProductTitle extends StatelessWidget {
             ),
           ),
           Expanded(
+            flex: 2,
             child: Text(
               product.title,
               textAlign: TextAlign.center,

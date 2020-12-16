@@ -6,10 +6,10 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import '../../../widgets/row_card.dart';
 
-class FarmerInfo extends StatelessWidget {
+class ProductFarmerInfo extends StatelessWidget {
   final Farmer farmer;
 
-  const FarmerInfo({Key key, this.farmer}) : super(key: key);
+  const ProductFarmerInfo({Key key, this.farmer}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +35,10 @@ class FarmerInfo extends StatelessWidget {
   }
 }
 
-class EcoInfo extends StatelessWidget {
+class ProductEcoInfo extends StatelessWidget {
   final EcoScore ecoScore;
 
-  const EcoInfo({Key key, this.ecoScore}) : super(key: key);
+  const ProductEcoInfo({Key key, this.ecoScore}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

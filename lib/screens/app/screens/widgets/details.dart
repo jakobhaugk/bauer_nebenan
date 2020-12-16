@@ -1,3 +1,4 @@
+import 'package:bauer_nebenan/screens/app/screens/shop/views/product_detail.dart';
 import 'package:flutter/material.dart';
 
 class Details extends StatefulWidget {
@@ -58,8 +59,10 @@ class _DetailsState extends State<Details> {
             ],
           ),
         ),
-        SliverFillRemaining(
-          child: widget.body,
+        SliverToBoxAdapter(
+          child: Scrollbar(
+            child: Container(child: widget.body),
+          )
         )
       ]
     );
