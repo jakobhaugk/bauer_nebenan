@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:bauer_nebenan/models/category.dart';
 import 'package:bauer_nebenan/screens/loading/loading_screen.dart';
-import 'widgets/item_card.dart';
+import '../../widgets/item_card.dart';
 
 class CategoryListView extends StatefulWidget {
   @override

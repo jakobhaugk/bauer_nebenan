@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class EcoScore  {
 	int distance;
 	int ranking;
@@ -21,5 +23,13 @@ class EcoScore  {
 		return data;
 	}
 
+  Color get color {
+    if (this.ranking > 70)
+      return Colors.green;
+    else if (this.ranking > 40)
+      return Colors.orange;
+    else
+      return Colors.red;
+  }
 
 }

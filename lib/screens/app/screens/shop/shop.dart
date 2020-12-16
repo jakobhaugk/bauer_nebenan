@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
+import '../standard_route.dart';
 import 'views/category_list.dart';
 import 'views/product_detail.dart';
 import 'views/product_list.dart';
@@ -10,31 +11,31 @@ import 'package:bauer_nebenan/models/category.dart';
 import 'package:bauer_nebenan/models/farmer.dart';
 
 class ShopScreen extends StatefulWidget {
+  final Map navKeys;
+
+  const ShopScreen({Key key, this.navKeys}) : super(key: key);
+
   @override
   _ShopScreenState createState() => _ShopScreenState();
 }
 
-class _ShopScreenState extends State<ShopScreen> with WidgetsBindingObserver {
-
+class _ShopScreenState extends State<ShopScreen> {
   @override
   Widget build(BuildContext context) => Navigator(
+        key: widget.navKeys['shop'],
         onGenerateRoute: (RouteSettings settings) {
-          
           String title;
           Widget body;
           PageTransitionType transition = PageTransitionType.fade;
 
-          print(settings.name);
-
           switch (settings.name) {
             case '/':
-            case '/category-list':
               title = 'Unser Sortiment';
               body = CategoryListView();
               break;
 
             case '/product-list':
-              transition = PageTransitionType.rightToLeft;
+              // transition = PageTransitionType.rightToLeft;
               if (settings.arguments is Category) {
                 Category category = settings.arguments;
                 title = category.name;
@@ -47,28 +48,20 @@ class _ShopScreenState extends State<ShopScreen> with WidgetsBindingObserver {
               break;
 
             case '/product-detail':
-              transition = PageTransitionType.rightToLeft;
+              transition = PageTransitionType.bottomToTop;
               Product product = settings.arguments;
               if (product != null) {
-                title = product.title;
-                body = ProductDetailView(product: product);
+                body = ProductDetailView(
+                    product: product, navKeys: widget.navKeys);
               }
               break;
           }
 
-          return PageTransition(
-            duration: Duration(milliseconds: 250),
-            curve: Curves.fastOutSlowIn,
-            type: transition,
-            child: Scaffold(
-              appBar: (title != null)
-                  ? AppBar(
-                      title: Text(title),
-                      centerTitle: true,
-                    )
-                  : null,
-              body: body ?? Error(),
-            ),
+          return StandardRoute(
+            body: body,
+            title: title,
+            transition: transition,
+            name: settings.name,
           );
         },
         initialRoute: '/',

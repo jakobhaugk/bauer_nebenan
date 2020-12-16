@@ -9,14 +9,14 @@ class Address {
   Address({this.street = '', this.zip = '', this.city = '', this.geolocation });
 
   factory Address.fromJSON(json) => Address(
-    street: json['streetName'] ?? '',
+    street: json['street'] ?? '',
     zip: json['zip'] ?? '',
     city: json['city'] ?? '',
     geolocation: Position.fromMap(json['geolocation']) ?? null,
   );
 
   Map toJSON() => {
-    'streetName': street,
+    'street': street,
     'zip': zip,
     'city': city,
     'geolocation': geolocation?.toJson() ?? null,

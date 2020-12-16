@@ -4,11 +4,23 @@ PODS:
     - Flutter
   - geolocator (6.1.9):
     - Flutter
+  - keyboard_visibility (0.5.0):
+    - Flutter
+    - Reachability
+  - Reachability (3.2)
+  - shared_preferences (0.0.1):
+    - Flutter
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
   - flutter_secure_storage (from `.symlinks/plugins/flutter_secure_storage/ios`)
   - geolocator (from `.symlinks/plugins/geolocator/ios`)
+  - keyboard_visibility (from `.symlinks/plugins/keyboard_visibility/ios`)
+  - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
+
+SPEC REPOS:
+  trunk:
+    - Reachability
 
 EXTERNAL SOURCES:
   Flutter:
@@ -17,11 +29,18 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_secure_storage/ios"
   geolocator:
     :path: ".symlinks/plugins/geolocator/ios"
+  keyboard_visibility:
+    :path: ".symlinks/plugins/keyboard_visibility/ios"
+  shared_preferences:
+    :path: ".symlinks/plugins/shared_preferences/ios"
 
 SPEC CHECKSUMS:
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
   flutter_secure_storage: 7953c38a04c3fdbb00571bcd87d8e3b5ceb9daec
   geolocator: 057a0c63a43e9c5296d8ad845a3ac8e6df23d899
+  keyboard_visibility: 96a24de806fe6823c3ad956c01ba2ec6d056616f
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
 
 PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
 

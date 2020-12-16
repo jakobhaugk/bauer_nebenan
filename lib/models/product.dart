@@ -9,7 +9,8 @@ class Product  {
 	String description;
 	Category category;
 	List<String> tags;
-	String unit;
+	String baseUnit;
+  double baseUnitRelation;
 	int quantityAvailable;
   int quantitySelected;
 	double price;
@@ -17,7 +18,7 @@ class Product  {
 	List<String> images;
 	Farmer farmer;
 
-	Product({this.id, this.title, this.description, this.category, this.tags, this.unit, this.quantityAvailable, this.price, this.ecoScore, this.images, this.farmer, this.quantitySelected = 0});
+	Product({this.id, this.title, this.description, this.category, this.tags, this.baseUnit, this.baseUnitRelation, this.quantityAvailable, this.price, this.ecoScore, this.images, this.farmer, this.quantitySelected = 0});
 
 	factory Product.fromJson(Map<String, dynamic> json) {
 		return Product(
@@ -26,7 +27,8 @@ class Product  {
 			description: json['description'],
 			category: json['categoryID'] != null ? new Category(id: json['categoryID'], name: json['categoryName']) : null,
 			tags: json['tags'].cast<String>(),
-			unit: json['unit'],
+			baseUnit: json['baseUnit'],
+      baseUnitRelation: json['baseUnitRelation'],
 			quantityAvailable: json['quantityAvailable'],
 			price: json['price'],
 			ecoScore: json['ecoScore'] != null ? new EcoScore.fromJson(json['ecoScore']) : null,
@@ -57,14 +59,21 @@ class Product  {
 	}
 
 
-  _formatPrice(num n) => n.toStringAsFixed(2).replaceFirst('.', ',');
+  _f(num n) => n.toStringAsFixed(2).replaceFirst('.', ',');
 
-  num get total => this.quantitySelected * this.price;
+  num get total => quantitySelected * price;
 
-  String get displayPrice => '${_formatPrice(this.price)} € / ${this.unit}';
+  String get displayPrice => '${_f(this.price)} €';
 
   String get priceAndQuantity =>
-      '${this.quantitySelected} x ${_formatPrice(this.price)} €';
+      '${this.quantitySelected} x ${_f(this.price)} €';
 
+  String get unit => baseUnit.split(' ').last;
+
+  double get _weight => double.parse(this.baseUnit.split(' ').first) * baseUnitRelation;
+
+  String get weight => '${_f(_weight)} $unit';
+
+  String get groundprice => '${_f(price / baseUnitRelation)} € / $unit';
 
 }

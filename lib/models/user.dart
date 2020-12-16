@@ -49,7 +49,7 @@ class User {
   Map get authHeader => {'Authorization': this.basicAuth};
   Map get loginBody => {'username': username, 'password': password};
 
-  bool get isEmpty => username == null || password == null;
+  bool get isEmpty => username == null;
 
   bool get readyToShop => status == UserStatus.unlocked || status == UserStatus.complete;
 

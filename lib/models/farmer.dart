@@ -7,9 +7,10 @@ class Farmer  {
 	String bannerImage;
 	String description;
 	String quote;
+	String subtitle;
 	Location location;
 
-	Farmer({this.id, this.name, this.profileImage, this.bannerImage, this.description, this.quote, this.location});
+	Farmer({this.id, this.name, this.profileImage, this.bannerImage, this.description, this.quote, this.location, this.subtitle});
 
 	factory Farmer.fromJson(Map<String, dynamic> json) {
 		return Farmer(
@@ -19,6 +20,7 @@ class Farmer  {
 			bannerImage: json['bannerImage'],
 			description: json['description'],
 			quote: json['quote'],
+      subtitle: json['subtitle'],
 			location: json['location'] != null ? new Location.fromJson(json['location']) : null,
 		);
 	}
@@ -31,6 +33,7 @@ class Farmer  {
 		data['bannerImage'] = this.bannerImage;
 		data['description'] = this.description;
 		data['quote'] = this.quote;
+    data['subtitle'] = this.subtitle;
 		if (this.location != null) {
       data['location'] = this.location.toJson();
     }

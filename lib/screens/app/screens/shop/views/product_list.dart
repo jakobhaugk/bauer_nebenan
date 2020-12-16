@@ -1,3 +1,4 @@
+import 'package:bauer_nebenan/models/eco_score.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bauer_nebenan/screens/loading/loading_screen.dart';
@@ -5,7 +6,7 @@ import 'package:bauer_nebenan/models/category.dart';
 import 'package:bauer_nebenan/models/farmer.dart';
 import 'package:bauer_nebenan/models/product.dart';
 
-import 'widgets/item_card.dart';
+import '../../widgets/item_card.dart';
 
 class ProductListView extends StatefulWidget {
   final Category category;
@@ -26,14 +27,17 @@ class _ProductListViewState extends State<ProductListView> {
         Duration(seconds: 2),
         () => [
               Product(
-                title: 'Apfel',
+                title: 'Knackige Äpfel',
                 images: [
                   'https://www.baumschule-horstmann.de/bilder/popup/apfel-geheimrat-dr-oldenburg-m002566_h_0.jpg',
                   'https://www.tagesspiegel.de/images/yellow-color-place-and-window-with-sun-light/26102892/3-format530.jpg',
                 ],
                 description: 'Sehr leckerer Apfel Lorem Ipsum dies das',
-                price: 4.2,
-                unit: 'kg'
+                price: 2.1,
+                baseUnit: '1 kg',
+                baseUnitRelation: 0.5,
+                farmer: Farmer(name: 'Bauer Paul', profileImage: 'https://www.tvmovie.de/bilder/760/2019/06/06/71228-bauer-sucht-frau-christian-33-aus-niedersachsen.jpg?itok=5OYK74Nm'),
+                ecoScore: EcoScore(co2: 70, distance: 23, ranking: 76)
               ),
               Product(
                 title: 'Birne',
@@ -43,7 +47,8 @@ class _ProductListViewState extends State<ProductListView> {
                 ],
                 description: 'Sehr leckere Birne Lorem Ipsum dies das',
                 price: 3.9,
-                unit: 'kg'
+                baseUnit: '1 kg',
+                baseUnitRelation: 1,
               )
             ]);
     super.initState();
