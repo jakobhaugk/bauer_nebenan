@@ -27,6 +27,7 @@ class _ProductListViewState extends State<ProductListView> {
         Duration(seconds: 2),
         () => [
               Product(
+                id: '123',
                 title: 'Knackige Äpfel',
                 images: [
                   'https://www.baumschule-horstmann.de/bilder/popup/apfel-geheimrat-dr-oldenburg-m002566_h_0.jpg',
@@ -36,11 +37,13 @@ class _ProductListViewState extends State<ProductListView> {
                 price: 2.1,
                 baseUnit: '1 kg',
                 baseUnitRelation: 0.5,
-                farmer: Farmer(name: 'Bauer Paul', profileImage: 'https://www.tvmovie.de/bilder/760/2019/06/06/71228-bauer-sucht-frau-christian-33-aus-niedersachsen.jpg?itok=5OYK74Nm'),
+                quantityAvailable: 7,
+                farmer: Farmer(name: 'Paul Gemüse GmbH', subtitle: 'Bauer Paul & Familie aus Marburg', profileImage: 'https://www.tvmovie.de/bilder/760/2019/06/06/71228-bauer-sucht-frau-christian-33-aus-niedersachsen.jpg?itok=5OYK74Nm'),
                 ecoScore: EcoScore(co2: 70, distance: 23, ranking: 76),
-                additionalInformation: [AdditionalInfo(title: 'Nährwerte', image: 'https://lh3.googleusercontent.com/proxy/wjkS5I5SLoX6dhGFRUBJ2MK-oOKsQGIqx5wjxofxonEJu6cxsTQttu9GjTxAJZlTP2Jvf5sMVTDoBFLbsWy8U4gtN-oq7n6tTm2V8m-sXoUY1NzRjXHyBJfFbadDc5K4turSZLa9WA')],
+                additionalInformation: [AdditionalInfo(title: 'Nährwerte', image: 'https://www.plantura.garden/wp-content/uploads/2018/03/Apfel-Tabelle-1.png')],
               ),
               Product(
+                id: 'abc',
                 title: 'Birne',
                 images: [
                   'https://www.neudorff.de/fileadmin/_processed_/2/0/csm_birne_rund_df21cdfd03.jpg',

@@ -8,30 +8,21 @@ import 'screens/profile/profile.dart';
 
 class Screen {
   final String title, label, icon;
-  final Widget body, appBar;
+  final Widget appBar;
   final int index;
 
-  Screen(this.index, this.title, this.icon, this.body,
-      {this.appBar, this.label});
+  Screen(this.index, this.title, this.icon, {this.appBar, this.label});
 }
 
-final Map<String, GlobalKey<NavigatorState>> navKeys = {
-  'shop': GlobalKey<NavigatorState>(debugLabel: 'navKey shop'),
-  'cart': GlobalKey<NavigatorState>(debugLabel: 'navKey cart'),
-  'farmer': GlobalKey<NavigatorState>(debugLabel: 'navKey farmer'),
-  'home': GlobalKey<NavigatorState>(debugLabel: 'navKey home'),
-};
-
 class Home extends StatefulWidget {
+  final List<Screen> screens = <Screen>[
+    Screen(0, 'Produkte', 'shop'),
+    Screen(1, 'Warenkorb', 'cart'),
+    Screen(2, 'Bauern', 'farmer'),
+    Screen(3, 'Profil', 'home'),
+  ];
   @override
   _HomeState createState() => _HomeState();
-
-  final List<Screen> screens = <Screen>[
-    Screen(0, 'Produkte', 'shop', ShopScreen(navKeys: navKeys)),
-    Screen(1, 'Warenkorb', 'cart', CartScreen()),
-    Screen(2, 'Bauern', 'farmer', FarmerScreen()),
-    Screen(3, 'Profil', 'home', ProfileScreen()),
-  ];
 }
 
 class _HomeState extends State<Home> with TickerProviderStateMixin<Home> {
@@ -57,8 +48,16 @@ class _HomeState extends State<Home> with TickerProviderStateMixin<Home> {
     super.dispose();
   }
 
+  void _navigate(int i) => setState(() => _index = i);
+
   @override
   Widget build(BuildContext context) {
+    List<Widget> _screens = [
+      ShopScreen(navigateTo: _navigate),
+      CartScreen(navigateTo: _navigate),
+      FarmerScreen(navigateTo: _navigate),
+      ProfileScreen(navigateTo: _navigate),
+    ];
     return Scaffold(
       body: SafeArea(
         top: false,
@@ -71,7 +70,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin<Home> {
                 ),
                 child: KeyedSubtree(
                   key: _screenKeys[screen.index],
-                  child: screen.body,
+                  child: _screens[screen.index],
                 ));
             if (screen.index == _index) {
               _faders[screen.index].forward();
@@ -92,9 +91,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin<Home> {
         type: BottomNavigationBarType.fixed,
         unselectedItemColor: Colors.grey,
         currentIndex: _index,
-        onTap: (int i) {
-          setState(() => _index = i);
-        },
+        onTap: _navigate,
         items: widget.screens
             .map((Screen screen) => BottomNavigationBarItem(
                   icon: Image.asset(

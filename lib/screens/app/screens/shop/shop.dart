@@ -11,9 +11,9 @@ import 'package:bauer_nebenan/models/category.dart';
 import 'package:bauer_nebenan/models/farmer.dart';
 
 class ShopScreen extends StatefulWidget {
-  final Map navKeys;
+  final Function navigateTo;
 
-  const ShopScreen({Key key, this.navKeys}) : super(key: key);
+  const ShopScreen({this.navigateTo});
 
   @override
   _ShopScreenState createState() => _ShopScreenState();
@@ -22,7 +22,6 @@ class ShopScreen extends StatefulWidget {
 class _ShopScreenState extends State<ShopScreen> {
   @override
   Widget build(BuildContext context) => Navigator(
-        key: widget.navKeys['shop'],
         onGenerateRoute: (RouteSettings settings) {
           String title;
           Widget body;
@@ -52,7 +51,7 @@ class _ShopScreenState extends State<ShopScreen> {
               Product product = settings.arguments;
               if (product != null) {
                 body = ProductDetailView(
-                    product: product, navKeys: widget.navKeys);
+                    product: product, navigateTo: widget.navigateTo);
               }
               break;
           }

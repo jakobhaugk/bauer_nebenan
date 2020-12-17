@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'views/cart_items.dart';
 
 class CartScreen extends StatefulWidget {
+  final Function navigateTo;
+
+  const CartScreen({this.navigateTo});
+  
   @override
   _CartScreenState createState() => _CartScreenState();
 }

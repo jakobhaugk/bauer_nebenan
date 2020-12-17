@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'views/farmer_list.dart';
 
 class FarmerScreen extends StatefulWidget {
-  final Map navKeys;
+    final Function navigateTo;
 
-  const FarmerScreen({Key key, this.navKeys}) : super(key: key);
+  const FarmerScreen({this.navigateTo});
   @override
   _FarmerScreenState createState() => _FarmerScreenState();
 }

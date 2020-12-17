@@ -1,28 +1,31 @@
 import 'package:flutter/material.dart';
 
 class RowCard extends StatelessWidget {
-  final double height, padding;
-  final Widget leading, content;
+  final double height, topPadding, sidePadding;
+  final Widget leading, content, trailing;
+  final Color color;
   final Function onTap;
 
-  const RowCard(
-      {Key key,
-      this.height,
-      this.leading,
-      this.content,
-      this.onTap,
-      this.padding = 0})
-      : super(key: key);
+  const RowCard({
+    this.height,
+    this.leading,
+    this.content,
+    this.trailing,
+    this.onTap,
+    this.topPadding = 0.0,
+    this.sidePadding = 24.0,
+    this.color = Colors.white,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: padding),
+      padding: EdgeInsets.symmetric(vertical: topPadding),
       child: GestureDetector(
         onTap: onTap,
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: color,
             borderRadius: BorderRadius.all(
               Radius.circular(height / 2),
             ),
@@ -39,8 +42,8 @@ class RowCard extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 24.0),
+              if (leading != null) Padding(
+                padding: EdgeInsets.only(right: sidePadding),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(height / 2),
                   child: Container(
@@ -53,7 +56,21 @@ class RowCard extends StatelessWidget {
                   ),
                 ),
               ),
-              content
+              Expanded(child: content ?? Container()),
+              if (trailing != null) Padding(
+                padding: EdgeInsets.only(left: sidePadding),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(height / 2),
+                  child: Container(
+                    width: height,
+                    height: height,
+                    child: FittedBox(
+                      fit: BoxFit.cover,
+                      child: trailing,
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),

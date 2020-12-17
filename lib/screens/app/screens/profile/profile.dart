@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import 'views/profile_dashboard.dart';
 
 class ProfileScreen extends StatefulWidget {
+  
+  final Function navigateTo;
+
+  const ProfileScreen({this.navigateTo});
+
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }

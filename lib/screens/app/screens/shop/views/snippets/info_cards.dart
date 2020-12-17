@@ -1,9 +1,9 @@
-import 'package:bauer_nebenan/models/eco_score.dart';
-import 'package:bauer_nebenan/models/farmer.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
+import 'package:bauer_nebenan/models/eco_score.dart';
+import 'package:bauer_nebenan/models/farmer.dart';
 import '../../../widgets/row_card.dart';
 
 class ProductFarmerInfo extends StatelessWidget {
@@ -15,15 +15,17 @@ class ProductFarmerInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return RowCard(
       height: 60,
-      padding: 6,
+      topPadding: 6,
       onTap: () {},
       leading: CachedNetworkImage(imageUrl: farmer.profileImage),
       content: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             farmer.name,
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: TextStyle(fontWeight: FontWeight.w600),
+            textAlign: TextAlign.left,
           ),
           if (farmer.subtitle != null)
             Text(
@@ -44,7 +46,7 @@ class ProductEcoInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return RowCard(
       height: 60,
-      padding: 6,
+      topPadding: 6,
       leading: CircularPercentIndicator(
         radius: 53.0,
         lineWidth: 7,
